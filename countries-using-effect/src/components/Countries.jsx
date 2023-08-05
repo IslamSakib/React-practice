@@ -8,8 +8,13 @@ export default function Countries() {
       .then((data) => setCountries(data));
   }, []);
 
-  return <div>
-    <h1>Visitig Every Countries</h1>
-    <h5>Available Countries: {countries.length}</h5>
-  </div>;
+  return (
+    <div>
+      <h1>Visitig Every Countries</h1>
+      <h5>Available Countries: {countries.length}</h5>
+      {countries.map((country) => (
+        <li>{country.name.common}</li>
+      ))}
+    </div>
+  );
 }
