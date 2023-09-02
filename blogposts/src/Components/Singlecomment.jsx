@@ -1,6 +1,5 @@
 import React from "react";
 
-
 export default function Singlecomment(props) {
   return (
     <div className="comment">
