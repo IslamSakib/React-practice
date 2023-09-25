@@ -4,14 +4,16 @@ export default function Search() {
   let [entry, NewENtry] = useState("");
 
   const onInputChange = (event) => {
-    event.target.value = NewENtry;
-    NewENtry = entry;
-    console.log(entry);
+    console.log(event.target.value)
   };
+
+  const onFormSubmit = (event) => { 
+    event.preventDefault()
+   }
 
   return (
     <div className="ui segment">
-      <form className="ui form" action="">
+      <form onSubmit={onFormSubmit} className="ui form" action="">
         <div className="field">
           <div className="ui massive icon input">
             <input
