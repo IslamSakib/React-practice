@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
       <div className="ui container">
-        <Search />
+        <Search/>
       </div>
     </div>
   );
