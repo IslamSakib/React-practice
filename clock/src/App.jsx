@@ -9,14 +9,20 @@ export default class App extends Component {
     this.state = { date: new Date() };
   }
 
-  // Adding function to mount the state in DOM
+  // Creating this cnstructor to pass the method to interval function
+  tick() {
+    this.setState({ date: new Date() });
+  }
+
+  // Adding lifecycle method to mount the state in DOM
   componentDidMount() {
     // Setting interval to update the state with 1s interval
-    setInterval(() => {
-      this.setState({
-        date: new Date(),
-      });
-    }, 1000);
+    this.clockTimer = setInterval(() => this.tick(), 1000);
+  }
+
+  //Adding lifecycle method to unmount the interval. So that the function stop working from background after leaving the application from the dom.
+  componentWillUnmount(){
+    clearInterval(this.clockTimer)
   }
 
   render() {
