@@ -1,35 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { Component } from "react";
+import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0)
+export default class App extends Component {
+  // Constructor is the element of a base class
+  constructor(props) {
+    // Calling super to innitialize the props of the base class component
+    super(props);
+    this.state = { date: new Date() };
+  }
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  // Adding function to mount the state in DOM
+  componentDidMount() {
+    // Setting interval to update the state with 1s interval
+    setInterval(() => {
+      this.setState({
+        date: new Date(),
+      });
+    }, 1000);
+  }
+
+  render() {
+    return (
+      <>
+        <div className="heading">
+          <h1>Live Time</h1>
+          <h2 className="text">
+            {this.state.date.toLocaleTimeString(this.props.locale)}
+          </h2>
+        </div>
+      </>
+    );
+  }
 }
-
-export default App
